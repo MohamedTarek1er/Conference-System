@@ -1,0 +1,18 @@
+create table Organizers
+(
+   org_Id number primary key,
+   org_Name varchar2(20),
+   Gender char(1),
+   Email varchar2(50),
+   co_id  REFERENCES conference (co_id),
+   No_of_Organizers number(5)
+
+)
+--------------------------------------
+
+insert into organizers(org_id, org_name,gender, email, co_id, no_of_organizers)
+values  (23,'Ahmed','m','ahmed2003@gmail.com',144,66),
+        (55,'Samy','m','samy2000@gmail.com',344,811),
+        (142,'Asmaa','f','asmaa2002@gmail.com',512,233),
+        (250,'Salma','f','salma2001@gmail.com',721,360);       
+       

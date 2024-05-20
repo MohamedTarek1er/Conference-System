@@ -1,0 +1,19 @@
+CREATE TABLE guests (
+
+  f_name VARCHAR2(50),
+  m_init VARCHAR2(50),
+  l_name VARCHAR2(50),
+  guest_id NUMBER PRIMARY KEY,
+  gender VARCHAR2(10),
+  mail VARCHAR2(100),
+  co_id references conference (co_id),
+  no_of_guests NUMBER
+);
+------------------------------------------
+
+insert into guests(f_name, m_init, l_name, guest_id, gender, mail, co_id, no_of_guests)
+values  ('Salah','Mohand','samy',777,'m','sa1ah2003@gmail.com',144,50),
+        ('Ziad','Hassan','Moaz',665,'m','ziad2000@gmail.com',344,111),
+        ('mariam','Hany','Elhelw',343,'f','mariam2002@gmail.com',512,445),
+        ('Samira','Mohamed','samy',123,'f','samira2001@gmail.com',721,365);       
+       

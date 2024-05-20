@@ -1,0 +1,19 @@
+CREATE TABLE Reviews
+(  
+
+Re_id REFERENCES Reviewers (Re_Id),
+paper_id   REFERENCES paper (paper_id), 
+
+constraint pkk1 primary key (Re_id,paper_id)
+);
+
+
+
+-------------------------
+
+insert into reviews ( re_id, paper_id)
+values  (310,154),
+        (311,87),
+        (312,90),       
+        (313,165);    
+       

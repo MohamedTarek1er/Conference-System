@@ -1,0 +1,274 @@
+create table conference
+(
+
+Co_id number primary key,
+Co_name varchar2(20),
+
+Start_date date,
+End_date date
+
+)
+
+----------------------------------------------------
+
+create table conference_Location
+(
+
+co_id references conference (co_id),
+city varchar2(20),
+street varchar2(20),
+postal_code number,
+
+constraint pk2 primary key (co_id,city,street,postal_code)
+
+)
+
+-----------------------------------------------------
+
+create table Authors
+(
+
+F_Name varchar2(20),
+M_init varchar2(20),
+L_Name varchar2(20),
+Gender Varchar2(1), 
+Email  Varchar2(50), 
+Au_Id number primary key,
+Bdate DATE
+
+)
+
+-------------------------------------------------------
+
+create table Events20
+(
+
+Ev_name varchar2(20),
+Start_date date,
+End_date date,
+
+co_id references conference (Co_id),
+constraint pk1 primary key (Ev_name,co_id)
+
+)
+
+--------------------------------------------------------
+
+create table Event_location
+(
+
+ev_name varchar2(20),
+co_id number,
+foreign key (ev_name,co_id)
+references events20(ev_name,co_id),
+
+Location1 varchar2(20),
+primary key (ev_name,co_id,Location1)
+
+)
+
+---------------------------------------------------------
+
+CREATE TABLE guests (
+
+  f_name VARCHAR2(50),
+  m_init VARCHAR2(50),
+  l_name VARCHAR2(50),
+  guest_id NUMBER PRIMARY KEY,
+  gender VARCHAR2(10),
+  mail VARCHAR2(100),
+  co_id references conference (co_id),
+  no_of_guests NUMBER
+
+);
+
+-----------------------------------------------------------
+
+create table Organizers
+(
+   org_Id number primary key,
+   org_Name varchar2(20),
+   Gender char(1),
+   Email varchar2(50),
+   co_id  REFERENCES conference (co_id),
+   No_of_Organizers number(5)
+
+)
+
+-----------------------------------------------------------
+
+create table Paper
+(
+
+  Paper_Name varchar2(20),
+  Paper_id number(5) primary key,
+  Content1 varchar(30),
+  Size1 number(5)
+
+);
+
+------------------------------------------------------------
+
+CREATE TABLE publishes
+
+(
+
+  Number_Of_Paper NUMBER,
+
+  co_id REFERENCES conference (Co_ID),
+  paper_id   REFERENCES paper (paper_id),
+  au_id   REFERENCES Authors (Au_id),
+
+  CONSTRAINT pk3 PRIMARY key (co_id,paper_id,au_id)
+ 
+)
+
+--------------------------------------------------------------
+
+create table Reviewers
+(
+
+  Re_Name varchar2(20),
+  Re_id number(5) primary key,
+  Gender char(1), --f/m
+  Email varchar2(50),
+  Feedback varchar2(25)
+
+);
+
+-------------------------------------------------------------
+
+CREATE TABLE Reviews
+
+(  
+
+  Re_id REFERENCES Reviewers (Re_Id),
+  paper_id   REFERENCES paper (paper_id), 
+
+  constraint pkk1 primary key (Re_id,paper_id)
+
+);
+
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+// Insert Statements
+
+---------------------------------------------------------------
+
+insert into conference (co_id, co_name, start_date ,end_date)
+
+values  (512,'Global Connect','23-JUN-01','23-JUN-08'),
+        (344,'Success Symposium','23-FEB-14','22-FEB-28'),
+        (721,'Innovate Forum','24-SEP-10','24-SEP-13'),
+        (144,'Elite Summit','22-MAY-19','22-MAY-20');
+
+---------------------------------------------------------------------   
+
+insert into conference_location (co_id, city, street , postal_code)
+
+values  (512,'Cairo','Makram','127979'),
+        (344,'New York','Broadway','990344'),
+        (721,'Riyadh','Fahad','559044'),
+        (144,'Taif','Shobra','7795003');
+       
+-----------------------------------------------------------------------------------
+
+insert into Authors (f_name, m_init, l_name , gender, email, au_id, bdate)
+
+values   ('Ahmed','Ismail','Morsy','m','ahmedIs2001@gmail.com',122,'01-JUL-06'),
+         ('Mohamed','Samy','Elsawy','m','mohamedss2002@gmail.com',123,'02-FEB-05'),
+         ('Mai','Tarek','Abbas','f','maitarek2003@gmail.com',124,'03-JAN-05');
+      
+--------------------------------------------------------------------------------------
+
+insert into events20 (ev_name, co_id, start_date , end_date)
+
+values  ('Festive Frolics',512,'23-JUN-01','23-JUN-03'),
+        ('Gala Glitz',344,'23-FEB-15','23-FEB-17'),
+        ('Novel Notions',721,'24-SEP-10','24-SEP-11'),
+        ('Dreamy Designs',144,'22-MAY-19','22-MAY-20');
+
+-------------------------------------------------------------------------
+
+insert into event_location(ev_name, co_id, location1)
+
+values  ('Festive Frolics',512,'Basement'),
+        ('Gala Glitz',344,'Roof 19'),
+        ('Novel Notions',721,'Sky Plaza'),
+        ('Dreamy Designs',144,'pioneer');
+       
+-------------------------------------------------------------------------------------
+
+insert into guests(f_name, m_init, l_name, guest_id, gender, mail, co_id, no_of_guests)
+
+values  ('Salah','Mohand','samy',777,'m','sa1ah2003@gmail.com',144,50),
+        ('Ziad','Hassan','Moaz',665,'m','ziad2000@gmail.com',344,111),
+        ('mariam','Hany','Elhelw',343,'f','mariam2002@gmail.com',512,445),
+        ('Samira','Mohamed','samy',123,'f','samira2001@gmail.com',721,365);       
+       
+------------------------------------------------------------------------------------
+
+
+insert into organizers(org_id, org_name,gender, email, co_id, no_of_organizers)
+
+values  (23,'Ahmed','m','ahmed2003@gmail.com',144,66),
+        (55,'Samy','m','samy2000@gmail.com',344,811),
+        (142,'Asmaa','f','asmaa2002@gmail.com',512,233),
+        (250,'Salma','f','salma2001@gmail.com',721,360);     
+
+---------------------------------------------------------------------------------------
+
+insert into paper (paper_name, paper_id, content1 , size1)
+
+values  ('Andre1pa',154,'Freezing',10),
+        ('Mandatory Notes',87,'Gymaniziam',7),
+        ('LibraryNotes',90,'Science Reaserch',5),
+        ('Dreams',165,'Parking',13);
+
+-----------------------------------------------------------------------
+
+insert into publishes (co_id, paper_id, au_id , number_of_paper)
+
+values  (512,154,122,10),
+        (344,87,123,7),
+        (721,90,124,5),
+        (144,165,124,13);
+
+-----------------------------------------------------------------------
+
+insert into reviewers (re_name, re_id, gender , email, feedback)
+
+values  ('Ahmed',310,'m','ahmed2000@gmail.com','very good'),
+        ('Mohamed',311,'m','mohamed2001@gmail.com','Excellent'),
+        ('Ali',312,'m','ali2003@gmail.com','Good'),
+        ('Salma',313,'f','salma2000@gmail.com','Excellent');
+
+-------------------------------------------------------------------------
+
+insert into reviews ( re_id, paper_id)
+
+values  (310,154),
+        (311,87),
+        (312,90),       
+        (313,165); 
+---------------------------------------------------------   
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

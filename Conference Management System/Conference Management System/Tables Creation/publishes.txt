@@ -1,0 +1,20 @@
+CREATE TABLE publishes (
+
+Number_Of_Paper NUMBER,
+
+co_id REFERENCES conference (Co_ID),
+paper_id   REFERENCES paper (paper_id),
+au_id   REFERENCES Authors (Au_id),
+
+CONSTRAINT pk3 PRIMARY key (co_id,paper_id,au_id)
+ 
+)
+
+---------------------
+insert into publishes (co_id, paper_id, au_id , number_of_paper)
+values  (512,154,122,10),
+        (344,87,123,7),
+        (721,90,124,5),
+        (144,165,124,13);
+       
+       

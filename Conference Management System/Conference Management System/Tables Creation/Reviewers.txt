@@ -1,0 +1,18 @@
+create table Reviewers
+(Re_Name varchar2(20),
+Re_id number(5) primary key,
+Gender char(1),
+Email varchar2(50),
+Feedback varchar2(25)
+);
+
+
+
+----------------------
+insert into reviewers (re_name, re_id, gender , email, feedback)
+values  ('Ahmed',310,'m','ahmed2000@gmail.com','very good'),
+        ('Mohamed',311,'m','mohamed2001@gmail.com','Excellent'),
+        ('Ali',312,'m','ali2003@gmail.com','Good'),
+        ('Salma',313,'f','salma2000@gmail.com','Excellent');
+       
+       

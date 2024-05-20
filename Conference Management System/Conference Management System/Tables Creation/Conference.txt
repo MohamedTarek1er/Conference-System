@@ -1,0 +1,17 @@
+create table conference
+(
+Co_id number primary key,
+Co_name varchar2(20),
+
+Start_date date,
+End_date date
+)
+
+--------------------------------
+insert into conference (co_id, co_name, start_date ,end_date)
+values (512,'Global Connect','23-JUN-01','23-JUN-08'),
+       (344,'Success Symposium','23-FEB-14','22-FEB-28'),
+       (721,'Innovate Forum','24-SEP-10','24-SEP-13'),
+       (144,'Elite Summit','22-MAY-19','22-MAY-20');
+       
+       

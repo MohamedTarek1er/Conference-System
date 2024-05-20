@@ -1,0 +1,15 @@
+create table Paper
+(Paper_Name varchar2(20),
+Paper_id number(5) primary key,
+Content1 varchar(30),
+Size1 number(5)
+);
+
+------------------------
+insert into paper (paper_name, paper_id, content1 , size1)
+values  ('Andre1pa',154,'Freezing',10),
+        ('Mandatory Notes',87,'Gymaniziam',7),
+        ('LibraryNotes',90,'Science Reaserch',5),
+        ('Dreams',165,'Parking',13);
+       
+       

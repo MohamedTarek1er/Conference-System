@@ -1,0 +1,21 @@
+create table Authors
+(
+
+F_Name varchar2(20),
+M_init varchar2(20),
+L_Name varchar2(20),
+Gender Varchar2(1), 
+Email  Varchar2(50), 
+Au_Id number primary key,
+Bdate DATE
+
+)
+
+
+-------------------------
+insert into Authors (f_name, m_init, l_name , gender, email, au_id, bdate)
+values   ('Ahmed','Ismail','Morsy','m','ahmedIs2001@gmail.com',122,'01-JUL-06'),
+         ('Mohamed','Samy','Elsawy','m','mohamedss2002@gmail.com',123,'02-FEB-05'),
+         ('Mai','Tarek','Abbas','f','maitarek2003@gmail.com',124,'03-JAN-05');
+      
+       

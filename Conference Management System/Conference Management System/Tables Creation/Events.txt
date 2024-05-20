@@ -1,0 +1,19 @@
+create table Events20
+(
+
+Ev_name varchar2(20),
+Start_date date,
+End_date date,
+
+co_id references conference (Co_id),
+constraint pk1 primary key (Ev_name,co_id)
+
+)
+---------------------------
+insert into events20 (ev_name, co_id, start_date , end_date)
+values  ('Festive Frolics',512,'23-JUN-01','23-JUN-03'),
+        ('Gala Glitz',344,'23-FEB-15','23-FEB-17'),
+        ('Novel Notions',721,'24-SEP-10','24-SEP-11'),
+        ('Dreamy Designs',144,'22-MAY-19','22-MAY-20');
+       
+       

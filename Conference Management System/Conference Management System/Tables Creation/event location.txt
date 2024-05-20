@@ -1,0 +1,21 @@
+create table Event_location
+(
+
+ev_name varchar2(20),
+co_id number,
+foreign key (ev_name,co_id)
+references events20(ev_name,co_id),
+
+Location1 varchar2(20),
+primary key (ev_name,co_id,Location1)
+
+)
+
+-------------------------
+insert into event_location(ev_name, co_id, location1)
+values  ('Festive Frolics',512,'Basement'),
+        ('Gala Glitz',344,'Roof 19'),
+        ('Novel Notions',721,'Sky Plaza'),
+        ('Dreamy Designs',144,'pioneer');
+       
+       
